@@ -4,31 +4,42 @@ public class Persona {
     private String nombre;
     private int edad;
 
-    public Persona(){
+    public Persona() {
+    }
 
-    }
-    public Persona(String nombre, int edad){
+    public Persona(String nombre, int edad) {
         this.nombre = nombre;
-        this .edad = edad;
+        this.edad = edad;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
-    public void setNombre(String nombre){
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public int getEdad(){
+
+    public int getEdad() {
         return edad;
     }
-    public void setEdad(int edad){
-        this.edad =edad;
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public int getCriterioOrdenamiento(){
+    public int getCriterioOrdenamiento() {
         int valorNombre = 0;
-        for(int i =0; i < nombre.length(); i++){
+
+        for (int i = 0; i < nombre.length(); i++) {
             valorNombre += nombre.charAt(i);
         }
-        return valorNombre;
+
+        return edad * 100000 + valorNombre;
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " | Edad: " + edad + " | Criterio: " + getCriterioOrdenamiento();
     }
 }

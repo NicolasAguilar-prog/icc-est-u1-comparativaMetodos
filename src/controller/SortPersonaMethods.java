@@ -1,31 +1,60 @@
 package controller;
+
 import models.Persona;
-public class SortPersonaMethods{
-    public void insertionSort(Persona[] personas){
-        //add code
-    }
-    public void quickSort(Persona[]personas, int inicio, int fin){
-        if(inicio<fin){
-            int indicePivote= particionar (personas, inicio,fin);
-            quickSort (personas, inicio, indicePivote-1);
-            quickSort(personas, indicePivote+1, fin);
+
+public class SortPersonaMethods {
+
+    public void insertionSort(Persona[] personas) {
+        for (int i = 1; i < personas.length; i++) {
+            Persona actual = personas[i];
+            int j = i - 1;
+
+            while (j >= 0 && personas[j].getCriterioOrdenamiento() > actual.getCriterioOrdenamiento()) {
+                personas[j + 1] = personas[j];
+                j--;
+            }
+
+            personas[j + 1] = actual;
         }
     }
-    private int particionar(Persona[]personas, int inicio, int fin){
-        Persona pivote = personas[fin];
-        int i = inicio-1;
-        for (int j = inicio; j<fin; j++){
-            if (personas[j].getCriterioOrdenamiento() <= pivote.getCriterioOrdenamiento()){
+
+    public void quickSort(Persona[] personas, int inicio, int fin) {
+        if (inicio < fin) {
+            int indiceParticion = particionar(personas, inicio, fin);
+
+            quickSort(personas, inicio, indiceParticion - 1);
+            quickSort(personas, indiceParticion, fin);
+        }
+    }
+
+    private int particionar(Persona[] personas, int inicio, int fin) {
+        int pivote = personas[inicio + (fin - inicio) / 2].getCriterioOrdenamiento();
+
+        int i = inicio;
+        int j = fin;
+
+        while (i <= j) {
+            while (personas[i].getCriterioOrdenamiento() < pivote) {
                 i++;
-                intercambiar(personas,i,j);
+            }
+
+            while (personas[j].getCriterioOrdenamiento() > pivote) {
+                j--;
+            }
+
+            if (i <= j) {
+                intercambiar(personas, i, j);
+                i++;
+                j--;
             }
         }
-        intercambiar(personas,i+1,fin);
-        return i +1;
+
+        return i;
     }
-    private void intercambiar(Persona[]personas,int i, int j){
+
+    private void intercambiar(Persona[] personas, int i, int j) {
         Persona aux = personas[i];
-        personas[i]= personas[j];
-        personas[j]= aux;
+        personas[i] = personas[j];
+        personas[j] = aux;
     }
 }
