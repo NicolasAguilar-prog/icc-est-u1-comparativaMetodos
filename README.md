@@ -94,10 +94,7 @@ Porque este no revisa elementos atras, este lo que hace es dividir y ordenar por
 
 Colocar aquí una captura de pantalla de la consola con los tiempos obtenidos.
 
-![Evidencia de ejecución](img/evidencia.png)
+![Evidencia de ejecución](src/img/evidencia.png)
 
 ---
-
-# Enlace del repositorio
-
-COMPLETAR_CON_EL_ENLACE_DEL_REPOSITORIO
+https://github.com/NicolasAguilar-prog/icc-est-u1-comparativaMetodos.git
